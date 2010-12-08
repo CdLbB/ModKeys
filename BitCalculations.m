@@ -26,9 +26,14 @@
 	return xoredResult;
 }
 
-+(int) deleteBitsOf: (NSInteger) first from: (NSInteger) second {
-	int deletedResult = ((~first) &  second);
++(int) deleteBitsOf: (NSInteger) first using: (NSInteger) second {
+	int deletedResult = (first &  (~second));
 	return deletedResult;
 }
 
++(int) invertBitsOf: (NSInteger) first using: (NSInteger) second {
+	int invertedResult = (first & ~second) | (~first & second);
+	return invertedResult;
+}
+	
 @end

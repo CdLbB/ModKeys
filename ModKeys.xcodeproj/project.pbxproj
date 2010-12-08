@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		12B13C0F12A71746004D0BE1 /* ModifierKeyChange.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B13C0E12A71746004D0BE1 /* ModifierKeyChange.m */; };
+		1256B44412A99F9B00E7E840 /* MyNSEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 1256B44312A99F9B00E7E840 /* MyNSEvent.m */; };
 		12B13C8412A76948004D0BE1 /* BitCalculations.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B13C8312A76948004D0BE1 /* BitCalculations.m */; };
 		12B13D2C12A81CB9004D0BE1 /* GlobalMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 12B13D2B12A81CB9004D0BE1 /* GlobalMonitor.m */; };
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
@@ -21,8 +21,8 @@
 /* Begin PBXFileReference section */
 		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
-		12B13C0D12A71746004D0BE1 /* ModifierKeyChange.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifierKeyChange.h; sourceTree = "<group>"; };
-		12B13C0E12A71746004D0BE1 /* ModifierKeyChange.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifierKeyChange.m; sourceTree = "<group>"; };
+		1256B44212A99F9B00E7E840 /* MyNSEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyNSEvent.h; sourceTree = "<group>"; };
+		1256B44312A99F9B00E7E840 /* MyNSEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyNSEvent.m; sourceTree = "<group>"; };
 		12B13C8212A76948004D0BE1 /* BitCalculations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BitCalculations.h; sourceTree = "<group>"; };
 		12B13C8312A76948004D0BE1 /* BitCalculations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BitCalculations.m; sourceTree = "<group>"; };
 		12B13D2A12A81CB9004D0BE1 /* GlobalMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalMonitor.h; sourceTree = "<group>"; };
@@ -55,10 +55,10 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				1256B44212A99F9B00E7E840 /* MyNSEvent.h */,
+				1256B44312A99F9B00E7E840 /* MyNSEvent.m */,
 				12B13C8212A76948004D0BE1 /* BitCalculations.h */,
 				12B13C8312A76948004D0BE1 /* BitCalculations.m */,
-				12B13C0D12A71746004D0BE1 /* ModifierKeyChange.h */,
-				12B13C0E12A71746004D0BE1 /* ModifierKeyChange.m */,
 				12B13D2A12A81CB9004D0BE1 /* GlobalMonitor.h */,
 				12B13D2B12A81CB9004D0BE1 /* GlobalMonitor.m */,
 				3B92A9F80F6ED2CB0023785B /* ModKeysAppDelegate.applescript */,
@@ -197,9 +197,9 @@
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				3B92A9F90F6ED2CB0023785B /* ModKeysAppDelegate.applescript in Sources */,
-				12B13C0F12A71746004D0BE1 /* ModifierKeyChange.m in Sources */,
 				12B13C8412A76948004D0BE1 /* BitCalculations.m in Sources */,
 				12B13D2C12A81CB9004D0BE1 /* GlobalMonitor.m in Sources */,
+				1256B44412A99F9B00E7E840 /* MyNSEvent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

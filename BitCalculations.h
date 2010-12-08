@@ -17,6 +17,8 @@
 
 +(int) xorBitsOf: (NSInteger) first with: (NSInteger) second;
 
-+(int) deleteBitsOf: (NSInteger) first from: (NSInteger) second;
++(int) deleteBitsOf: (NSInteger) first using: (NSInteger) second;
+
++(int) invertBitsOf: (NSInteger) first using: (NSInteger) second;
 
 @end

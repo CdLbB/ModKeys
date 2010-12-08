@@ -33,9 +33,18 @@
 +(id) monitorNext: (NSEventMask) eventMask performSelector: (SEL) aSelector target: (id) target {
 	myNextMonitor = [NSEvent addGlobalMonitorForEventsMatchingMask:eventMask handler:^(NSEvent *event) {
 		NSLog(@"NextMonitorEvent");
-		[NSEvent removeMonitor: myNextMonitor];				
-		[target performSelector: aSelector withObject: event];
 		
+		//CGRect winBounds;
+		//winBounds = [[target performSelector: @selector(keyPanel)] frame];
+		//CGPoint eventLocation;
+		//eventLocation = [NSEvent mouseLocation];
+		//NSLog(@"%1f %1f", eventLocation.x, eventLocation.y);
+		//if (!CGRectContainsPoint(winBounds, eventLocation)) {
+
+		    [NSEvent removeMonitor: myNextMonitor];				
+		    [target performSelector: aSelector withObject: event];
+			
+		//}		
 	}];	
 	return myNextMonitor;
 }

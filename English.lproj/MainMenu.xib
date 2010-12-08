@@ -1313,7 +1313,7 @@
 			<object class="NSWindowTemplate" id="972006081">
 				<int key="NSWindowStyleMask">259</int>
 				<int key="NSWindowBacking">2</int>
-				<string key="NSWindowRect">{{335, 390}, {30, 336}}</string>
+				<string key="NSWindowRect">{{335, 390}, {30, 342}}</string>
 				<int key="NSWTFlags">1954021376</int>
 				<string key="NSWindowTitle">ModKeys</string>
 				<string key="NSWindowClass">NSWindow</string>
@@ -1710,7 +1710,7 @@
 							<reference key="NSSuperview" ref="439893737"/>
 						</object>
 					</object>
-					<string key="NSFrameSize">{30, 336}</string>
+					<string key="NSFrameSize">{30, 342}</string>
 					<reference key="NSSuperview"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
@@ -1722,7 +1722,7 @@
 			<object class="NSCustomObject" id="755631768">
 				<string key="NSClassName">NSFontManager</string>
 			</object>
-			<object class="NSUserDefaultsController" id="475948876">
+			<object class="NSUserDefaultsController" id="842111092">
 				<bool key="NSSharedInstance">YES</bool>
 			</object>
 		</object>
@@ -2576,6 +2576,70 @@
 						</object>
 					</object>
 					<int key="connectionID">596</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: modKeyLockOn</string>
+						<reference key="source" ref="638040112"/>
+						<reference key="destination" ref="976324537"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="638040112"/>
+							<reference key="NSDestination" ref="976324537"/>
+							<string key="NSLabel">value: modKeyLockOn</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">modKeyLockOn</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">599</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">xClearModButtons:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="125709741"/>
+					</object>
+					<int key="connectionID">600</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">lockButton:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="638040112"/>
+					</object>
+					<int key="connectionID">601</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">delegate</string>
+						<reference key="source" ref="972006081"/>
+						<reference key="destination" ref="976324537"/>
+					</object>
+					<int key="connectionID">602</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">keyboardButton:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="1047774417"/>
+					</object>
+					<int key="connectionID">603</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">preferencesButton:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="194188269"/>
+					</object>
+					<int key="connectionID">604</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">resetTabletButton:</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="850581040"/>
+					</object>
+					<int key="connectionID">605</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -3916,7 +3980,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">584</int>
-						<reference key="object" ref="475948876"/>
+						<reference key="object" ref="842111092"/>
 						<reference key="parent" ref="0"/>
 					</object>
 				</object>
@@ -4363,9 +4427,9 @@
 					<integer value="1"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
-					<string>{{379, 279}, {30, 336}}</string>
+					<string>{{387, 287}, {30, 342}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{379, 279}, {30, 336}}</string>
+					<string>{{387, 287}, {30, 342}}</string>
 					<integer value="1"/>
 					<string>{{33, 99}, {480, 360}}</string>
 					<string>{3.40282e+38, 3.40282e+38}</string>
@@ -4594,7 +4658,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">596</int>
+			<int key="maxID">605</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -4607,23 +4671,45 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>applicationShouldTerminate:</string>
+							<string>applicationShouldTerminateAfterLastWindowClosed:</string>
 							<string>applicationWillFinishLaunching:</string>
+							<string>clearModButtons:</string>
 							<string>commandKey:</string>
 							<string>controlKey:</string>
 							<string>deleteKey:</string>
 							<string>downArrowKey:</string>
 							<string>escapeKey:</string>
+							<string>keyboardButton:</string>
 							<string>leftArrowKey:</string>
+							<string>lockButton:</string>
+							<string>modifierFlagsChanged:</string>
 							<string>optionKey:</string>
+							<string>preferencesButton:</string>
+							<string>resetTabletButton:</string>
 							<string>returnKey:</string>
 							<string>rightArrowKey:</string>
+							<string>setModFlagMaskTo:</string>
 							<string>shiftKey:</string>
 							<string>spaceKey:</string>
 							<string>tabKey:</string>
+							<string>toggleQCKey:</string>
 							<string>upArrowKey:</string>
+							<string>windowDidMove:</string>
+							<string>xClearModButtons:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -4646,20 +4732,31 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>applicationShouldTerminate:</string>
+							<string>applicationShouldTerminateAfterLastWindowClosed:</string>
 							<string>applicationWillFinishLaunching:</string>
+							<string>clearModButtons:</string>
 							<string>commandKey:</string>
 							<string>controlKey:</string>
 							<string>deleteKey:</string>
 							<string>downArrowKey:</string>
 							<string>escapeKey:</string>
+							<string>keyboardButton:</string>
 							<string>leftArrowKey:</string>
+							<string>lockButton:</string>
+							<string>modifierFlagsChanged:</string>
 							<string>optionKey:</string>
+							<string>preferencesButton:</string>
+							<string>resetTabletButton:</string>
 							<string>returnKey:</string>
 							<string>rightArrowKey:</string>
+							<string>setModFlagMaskTo:</string>
 							<string>shiftKey:</string>
 							<string>spaceKey:</string>
 							<string>tabKey:</string>
+							<string>toggleQCKey:</string>
 							<string>upArrowKey:</string>
+							<string>windowDidMove:</string>
+							<string>xClearModButtons:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -4668,7 +4765,15 @@
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
+								<string key="name">applicationShouldTerminateAfterLastWindowClosed:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
 								<string key="name">applicationWillFinishLaunching:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">clearModButtons:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
@@ -4692,11 +4797,31 @@
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
+								<string key="name">keyboardButton:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
 								<string key="name">leftArrowKey:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
+								<string key="name">lockButton:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">modifierFlagsChanged:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
 								<string key="name">optionKey:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">preferencesButton:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">resetTabletButton:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
@@ -4705,6 +4830,10 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">rightArrowKey:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">setModFlagMaskTo:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
@@ -4720,7 +4849,19 @@
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
+								<string key="name">toggleQCKey:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
 								<string key="name">upArrowKey:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">windowDidMove:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">xClearModButtons:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 						</object>
@@ -4729,15 +4870,19 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>buttonFlagMask</string>
 							<string>cmdButtonValue</string>
 							<string>ctlButtonValue</string>
 							<string>flagChangeMonitor</string>
 							<string>keyPanel</string>
+							<string>nextEventMonitor</string>
 							<string>optButtonValue</string>
 							<string>shftButtonValue</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -4750,15 +4895,21 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>buttonFlagMask</string>
 							<string>cmdButtonValue</string>
 							<string>ctlButtonValue</string>
 							<string>flagChangeMonitor</string>
 							<string>keyPanel</string>
+							<string>nextEventMonitor</string>
 							<string>optButtonValue</string>
 							<string>shftButtonValue</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">buttonFlagMask</string>
+								<string key="candidateClassName">id</string>
+							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">cmdButtonValue</string>
 								<string key="candidateClassName">id</string>
@@ -4773,6 +4924,10 @@
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">keyPanel</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">nextEventMonitor</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBToOneOutletInfo">
