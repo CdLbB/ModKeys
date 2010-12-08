@@ -13,8 +13,6 @@ static id myNextMonitor;
 
 +(id) monitorEvery: (NSEventMask) eventMask performSelector: (SEL) aSelector target: (id) target;
 
-+(id) monitorEvery: (NSEventMask) eventMask ignoring: (NSEventMask) ignoreMask performSelector: (SEL) aSelector target: (id) target;
-
 +(id) monitorNext: (NSEventMask) eventMask performSelector: (SEL) aSelector target: (id) target;
 
 +(void) removeMonitor: (id) monitor;

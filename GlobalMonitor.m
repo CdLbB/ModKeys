@@ -18,17 +18,7 @@
 	}];	
 	return myMonitor;	
 }
-
-+(id) monitorEvery: (NSEventMask) eventMask ignoring: (NSEventMask) ignoreMask performSelector: (SEL) aSelector target: (id) target {
-	id myMonitor = [NSEvent addGlobalMonitorForEventsMatchingMask:eventMask handler:^(NSEvent *event) {
-		NSLog(@"EveryMonitorEvent");
-		int typeMask = 1 << [event type];
-		if ( !(typeMask & ignoreMask) ) {
-			[target performSelector: aSelector withObject: event];
-		}
-	}];	
-	return myMonitor;	
-}	
+	
 	
 +(id) monitorNext: (NSEventMask) eventMask performSelector: (SEL) aSelector target: (id) target {
 	myNextMonitor = [NSEvent addGlobalMonitorForEventsMatchingMask:eventMask handler:^(NSEvent *event) {

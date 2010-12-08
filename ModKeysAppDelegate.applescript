@@ -68,7 +68,8 @@ script ModKeysAppDelegate
 	
 	------- One Modifier button pushed, click one mod key in Quickclicks to reflect that -------
 	on changeModKey_keyMask_toState_(keyChar, keyMask, senderState)
-		set newModMask to (NSEvent's modifierFlags) as integer
+		set newModMask to (MyNSEvent's modifierFlags) as integer
+		log newModMask
 		if buttonFlagMask = newModMask then return 0 -- no changes needed
 		
 		GlobalMonitor's removeMonitor_(flagChangeMonitor) --stop monitor to keep it from changing stuff while we click a mod key in Quickclicks
@@ -235,7 +236,7 @@ script ModKeysAppDelegate
 		if buttonFlagMask = mask then return -- nothing to do
 		if nextEventMonitor is not missing value then
 			GlobalMonitor's removeMonitor_(nextEventMonitor)
-			set nextEventMonitor to missing value -- if remove lock section, remove this line + restore monitor after
+			set nextEventMonitor to missing value -- if remove lock section,  restore monitor after
 		end if
 		
 		set cmdState to (BitCalculations's andBitsOf_with_(current application's NSCommandKeyMask, mask))
@@ -252,9 +253,9 @@ script ModKeysAppDelegate
 		
 		set buttonFlagMask to mask
 		
-		-- Since system mod flags are typically expected to
-		-- behave as if locked, we change lock as needed.
-		-- I'm not really sure it should work this way
+		-- Since a system mod flag change probably happened in virtual keyboard, there is an impending NSLeftMouseUp. 
+		-- So if we turn on the nextEvent monitor, we'll reset keys as we push them. 
+		-- Since we are leaving it off, we'll indicate that by turning the lock on.
 		if nextEventMonitor is missing value then
 			if buttonFlagMask ≠ 0 then set my modKeyLockOn to 1
 			if buttonFlagMask = 0 then set my modKeyLockOn to 0
@@ -336,7 +337,12 @@ script ModKeysAppDelegate
 		-- but might be smarter to wait 1 sec and try again
 		set newModMask to (NSEvent's modifierFlags) as integer
 		if newModMask ≠ 0 and modKeyLockOn as boolean is false then
-			set nextEventMonitor to GlobalMonitor's monitorNext_performSelector_target_(nextEventMask, "clearModButtons:", me)
+			do shell script "sleep 1"
+			set newModMask to (NSEvent's modifierFlags) as integer
+			if newModMask ≠ 0 and modKeyLockOn as boolean is false then
+				setModFlagMaskTo_(0)
+				--set nextEventMonitor to GlobalMonitor's monitorNext_performSelector_target_(nextEventMask, "clearModButtons:", me)
+			end if
 		end if
 	end clearModButtons_
 	
