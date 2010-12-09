@@ -37,10 +37,11 @@ script ModKeysAppDelegate
 	property optButtonValue : missing value
 	property ctlButtonValue : missing value
 	property shftButtonValue : missing value
+	property alternativeFontSize : 16 -- bound to preferencesButton_ and resetTabletButton_
 	
-	
-	------- Reference to window -------
+	------- References to UI elements -------
 	property keyPanel : missing value
+	property keyViewArea : missing value
 	
 	on testQuickclicksAndAssitiveEnabled() -- Error for no Quickclicks or for assistive devices disabled.
 		try

@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="371"/>
+			<integer value="531"/>
 			<integer value="29"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
@@ -1588,7 +1588,7 @@
 								<object class="NSButton" id="194188269">
 									<reference key="NSNextResponder" ref="360625816"/>
 									<int key="NSvFlags">268</int>
-									<string key="NSFrame">{{3, 26}, {24, 24}}</string>
+									<string key="NSFrame">{{4, 27}, {24, 24}}</string>
 									<reference key="NSSuperview" ref="360625816"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSButtonCell" key="NSCell" id="162342438">
@@ -1597,7 +1597,7 @@
 										<string key="NSContents">✎</string>
 										<reference key="NSSupport" ref="198050560"/>
 										<reference key="NSControlView" ref="194188269"/>
-										<int key="NSButtonFlags">-2036580097</int>
+										<int key="NSButtonFlags">-2033434369</int>
 										<int key="NSButtonFlags2">162</int>
 										<string key="NSAlternateContents"/>
 										<string key="NSKeyEquivalent"/>
@@ -1617,7 +1617,7 @@
 										<string key="NSContents">⚡</string>
 										<reference key="NSSupport" ref="198050560"/>
 										<reference key="NSControlView" ref="850581040"/>
-										<int key="NSButtonFlags">-2036580097</int>
+										<int key="NSButtonFlags">-2032385793</int>
 										<int key="NSButtonFlags2">162</int>
 										<string key="NSAlternateContents"/>
 										<string key="NSKeyEquivalent"/>
@@ -1706,7 +1706,7 @@
 									</object>
 								</object>
 							</object>
-							<string key="NSFrameSize">{30, 336}</string>
+							<string key="NSFrame">{{0, -1}, {30, 365}}</string>
 							<reference key="NSSuperview" ref="439893737"/>
 						</object>
 					</object>
@@ -1723,6 +1723,10 @@
 				<string key="NSClassName">NSFontManager</string>
 			</object>
 			<object class="NSUserDefaultsController" id="375250030">
+				<object class="NSMutableArray" key="NSDeclaredKeys">
+					<bool key="EncodedWithXMLCoder">YES</bool>
+					<string>lightningBold</string>
+				</object>
 				<bool key="NSSharedInstance">YES</bool>
 			</object>
 		</object>
@@ -2640,6 +2644,46 @@
 						<reference key="destination" ref="850581040"/>
 					</object>
 					<int key="connectionID">605</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">keyViewArea</string>
+						<reference key="source" ref="976324537"/>
+						<reference key="destination" ref="360625816"/>
+					</object>
+					<int key="connectionID">614</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">fontSize: alternativeFontSize</string>
+						<reference key="source" ref="850581040"/>
+						<reference key="destination" ref="976324537"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="850581040"/>
+							<reference key="NSDestination" ref="976324537"/>
+							<string key="NSLabel">fontSize: alternativeFontSize</string>
+							<string key="NSBinding">fontSize</string>
+							<string key="NSKeyPath">alternativeFontSize</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">625</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">fontSize: alternativeFontSize</string>
+						<reference key="source" ref="194188269"/>
+						<reference key="destination" ref="976324537"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="194188269"/>
+							<reference key="NSDestination" ref="976324537"/>
+							<string key="NSLabel">fontSize: alternativeFontSize</string>
+							<string key="NSBinding">fontSize</string>
+							<string key="NSKeyPath">alternativeFontSize</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">626</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -3718,11 +3762,11 @@
 							<reference ref="125709741"/>
 							<reference ref="638040112"/>
 							<reference ref="1047774417"/>
-							<reference ref="194188269"/>
 							<reference ref="906882894"/>
 							<reference ref="324523870"/>
 							<reference ref="325511154"/>
 							<reference ref="489395515"/>
+							<reference ref="194188269"/>
 						</object>
 						<reference key="parent" ref="439893737"/>
 					</object>
@@ -4515,10 +4559,12 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<object class="NSAffineTransform"/>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">AQAAAAC/gAAAA</bytes>
+					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAAA/gAAAwsAAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABAQAAAwcgAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<object class="NSAffineTransform">
@@ -4658,7 +4704,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">612</int>
+			<int key="maxID">626</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -4871,11 +4917,11 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>buttonFlagMask</string>
-							<string>buttonTitleBold</string>
 							<string>cmdButtonValue</string>
 							<string>ctlButtonValue</string>
 							<string>flagChangeMonitor</string>
 							<string>keyPanel</string>
+							<string>keyViewArea</string>
 							<string>nextEventMonitor</string>
 							<string>optButtonValue</string>
 							<string>shftButtonValue</string>
@@ -4898,11 +4944,11 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>buttonFlagMask</string>
-							<string>buttonTitleBold</string>
 							<string>cmdButtonValue</string>
 							<string>ctlButtonValue</string>
 							<string>flagChangeMonitor</string>
 							<string>keyPanel</string>
+							<string>keyViewArea</string>
 							<string>nextEventMonitor</string>
 							<string>optButtonValue</string>
 							<string>shftButtonValue</string>
@@ -4911,10 +4957,6 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
 								<string key="name">buttonFlagMask</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">buttonTitleBold</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBToOneOutletInfo">
@@ -4931,6 +4973,10 @@
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">keyPanel</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">keyViewArea</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBToOneOutletInfo">
