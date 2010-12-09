@@ -1617,7 +1617,7 @@
 										<string key="NSContents">⚡</string>
 										<reference key="NSSupport" ref="198050560"/>
 										<reference key="NSControlView" ref="850581040"/>
-										<int key="NSButtonFlags">-2032385793</int>
+										<int key="NSButtonFlags">-2036580097</int>
 										<int key="NSButtonFlags2">162</int>
 										<string key="NSAlternateContents"/>
 										<string key="NSKeyEquivalent"/>

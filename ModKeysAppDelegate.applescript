@@ -10,6 +10,7 @@
 property BitCalculations : class "BitCalculations"
 property GlobalMonitor : class "GlobalMonitor"
 property MyNSEvent : class "MyNSEvent" -- subclass of NSEvent with clickAtLocation_(pt)
+property NSTrackingArea : class "NSTrackingArea"
 
 script ModKeysAppDelegate
 	property parent : class "NSObject"
@@ -27,6 +28,9 @@ script ModKeysAppDelegate
 	property nextEventMask : (2 ^ 2) as integer --NSEventTypeMask for next event monitor: NSLeftMouseUp
 	property buttonFlagMask : missing value -- reflecting the state of the modifier buttons 
 	property windowIsMoving : false -- A temporary flag to indicate when the window is moving: see on windowDidMove_(aNotification)
+	property mouseOverWindow : false
+	property windowIsHidden : false
+	property hideDelayTimerOn : false
 	
 	property flagChangeMonitor : missing value -- reference to flagChangeMonitor allowing removal
 	property nextEventMonitor : missing value -- reference to nextEventMonitor allowing removal
@@ -231,6 +235,10 @@ script ModKeysAppDelegate
 	------ Does not change system modifier key state ------
 	on setModButtonValues(mask)
 		if buttonFlagMask = mask then return -- nothing to do
+		
+		set hideDelayTimerOn to false -- so timer won't time out and hide the window
+		if windowIsHidden is true then showWindow()
+		
 		if nextEventMonitor is not missing value then
 			GlobalMonitor's removeMonitor_(nextEventMonitor)
 			set nextEventMonitor to missing value -- if remove lock section,  restore monitor after
@@ -257,9 +265,15 @@ script ModKeysAppDelegate
 			if buttonFlagMask ≠ 0 then set my modKeyLockOn to 1
 			if buttonFlagMask = 0 then set my modKeyLockOn to 0
 		end if
+		
+		if buttonFlagMask = 0 then -- set to hide window in 8 seconds
+			set hideDelayTimerOn to true
+			current application's NSObject's cancelPreviousPerformRequestsWithTarget_selector_object_(me, "hideWindow", missing value)
+			performSelector_withObject_afterDelay_("hideWindow", missing value, 8)
+		end if
 	end setModButtonValues
 	
-	-------- Set system mod key state to reflect mask -------
+	-------- Set system mod key state to reflect mask ------- 
 	-------- Does not affect app's modifier buttons --------
 	on setModFlagMaskTo_(mask)
 		set newModMask to (MyNSEvent's modifierFlags) as integer
@@ -338,7 +352,6 @@ script ModKeysAppDelegate
 			set newModMask to (MyNSEvent's modifierFlags) as integer
 			if newModMask ≠ 0 and modKeyLockOn as boolean is false then
 				setModFlagMaskTo_(0)
-				--set nextEventMonitor to GlobalMonitor's monitorNext_performSelector_target_(nextEventMask, "clearModButtons:", me)
 			end if
 		end if
 	end clearModButtons_
@@ -428,6 +441,65 @@ script ModKeysAppDelegate
 	end resetTabletButton_
 	-------------------------------------------------------------------------
 	
+	----------------------- Tracking Area Handlers ------------------------
+	---------------------------------------------------------------------------
+	on mouseEntered_(theEvent)
+		log "mouseEntered:"
+		set mouseOverWindow to true
+		
+		set hideDelayTimerOn to false -- so timer won't time out and hide the window
+		if windowIsHidden is true then showWindow()
+	end mouseEntered_
+	
+	on mouseExited_(theEvent)
+		log "mouseExited:"
+		set mouseOverWindow to false
+		
+		if buttonFlagMask = 0 then -- set to hide window in 8 seconds
+			set hideDelayTimerOn to true
+			current application's NSObject's cancelPreviousPerformRequestsWithTarget_selector_object_(me, "hideWindow", missing value)
+			performSelector_withObject_afterDelay_("hideWindow", missing value, 8)
+		end if
+	end mouseExited_
+	
+	on showWindow()
+		set windowIsHidden to false
+		
+		-- calculate edge location --
+		set theFrame to (keyPanel's frame) as record
+		if (x of origin of theFrame) < 640 then
+			set (x of origin of theFrame) to 10
+		else
+			set (x of origin of theFrame) to 1240
+		end if
+		
+		-- Move window, while moving windowIsMoving set so windowDidMove_ will not interupt --
+		set windowIsMoving to true
+		keyPanel's setFrame_display_animate_(theFrame, true, true)
+		performSelector_withObject_afterDelay_("endWindowMove", missing value, 1)
+	end showWindow
+	
+	on hideWindow()
+		if hideDelayTimerOn is false then return
+		set hideDelayTimerOn to false
+		if windowIsHidden is true then return
+		set windowIsHidden to true
+		
+		-- calculate edge location --
+		set theFrame to (keyPanel's frame) as record
+		if (x of origin of theFrame) < 640 then
+			set (x of origin of theFrame) to -29
+		else
+			set (x of origin of theFrame) to 1279
+		end if
+		
+		-- Move window, while moving windowIsMoving set so windowDidMove_ will not interupt --
+		set windowIsMoving to true
+		keyPanel's setFrame_display_animate_(theFrame, true, true)
+		performSelector_withObject_afterDelay_("endWindowMove", missing value, 1)
+	end hideWindow
+	-------------------------------------------------------------------------
+	
 	-------------------------------------------------------------------------
 	on awakeFromNib()
 		testQuickclicksAndAssitiveEnabled() -- Test for Quickclicks presence and for assistive devices enabled.
@@ -453,30 +525,24 @@ script ModKeysAppDelegate
 		if modKeyLockOn is 0 and buttonFlagMask ≠ 0 then
 			set nextEventMonitor to GlobalMonitor's monitorNext_performSelector_target_(nextEventMask, "clearModButtons:", me)
 		end if
+		
+		----------- Mouse Tracking Area Setup -----------
+		set trackingOptions to BitCalculations's orBitsOf_with_((current application's NSTrackingActiveAlways), (current application's NSTrackingMouseEnteredAndExited))
+		set theTrackingArea to (NSTrackingArea's alloc)'s initWithRect_options_owner_userInfo_(keyViewArea's |bounds|, trackingOptions, me, missing value)
+		keyViewArea's addTrackingArea_(theTrackingArea)
+		
 	end awakeFromNib
 	
 	on applicationWillFinishLaunching_(aNotification)
 		-- Insert code here to initialize your application before any files are opened 
-		log keyPanel's windowNumber
 	end applicationWillFinishLaunching_
 	
 	---- If window moved, send window to nearest screen edge ----
 	on windowDidMove_(aNotification)
 		if windowIsMoving is true then return -- if window moving to edge, let it move undisturbed
-		set windowIsMoving to true
-		set theFrame to (keyPanel's frame) as record
 		
 		do shell script "sleep .05" -- pause before moving window to edge
-		
-		-- calculate edge location --
-		if (x of origin of theFrame) < 640 then
-			set (x of origin of theFrame) to 10
-		else
-			set (x of origin of theFrame) to 1240
-		end if
-		
-		keyPanel's setFrame_display_animate_(theFrame, true, true)
-		performSelector_withObject_afterDelay_("endWindowMove", missing value, 1)
+		showWindow()
 	end windowDidMove_
 	
 	on endWindowMove() -- after 1 sec, reset windowIsMoving flag

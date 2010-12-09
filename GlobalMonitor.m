@@ -32,7 +32,7 @@
 		//if (!CGRectContainsPoint(winBounds, eventLocation)) {
 
 		    [NSEvent removeMonitor: myNextMonitor];	
-			[myNextMonitor release];
+			//[myNextMonitor release];
 		    [target performSelector: aSelector withObject: event];
 			
 		//}		
@@ -42,7 +42,7 @@
 
 +(void) removeMonitor: (id) monitor {	
 	[NSEvent removeMonitor: monitor];
-	[monitor release];
+	//[monitor release];
 }
 
 @end
