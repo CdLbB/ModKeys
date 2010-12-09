@@ -34,6 +34,6 @@
 +(int) invertBitsOf: (NSInteger) first using: (NSInteger) second {
 	int invertedResult = (first & ~second) | (~first & second);
 	return invertedResult;
-} // same as xor -- moran.
+} // same as xor -- moron.
 	
 @end

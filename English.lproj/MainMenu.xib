@@ -12,7 +12,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="531"/>
+			<integer value="371"/>
 			<integer value="29"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
@@ -1313,7 +1313,7 @@
 			<object class="NSWindowTemplate" id="972006081">
 				<int key="NSWindowStyleMask">259</int>
 				<int key="NSWindowBacking">2</int>
-				<string key="NSWindowRect">{{335, 390}, {30, 342}}</string>
+				<string key="NSWindowRect">{{496, 313}, {30, 342}}</string>
 				<int key="NSWTFlags">1954021376</int>
 				<string key="NSWindowTitle">ModKeys</string>
 				<string key="NSWindowClass">NSWindow</string>
@@ -1457,7 +1457,7 @@
 										<string key="NSContents">⇧</string>
 										<reference key="NSSupport" ref="198050560"/>
 										<reference key="NSControlView" ref="99279390"/>
-										<int key="NSButtonFlags">914637055</int>
+										<int key="NSButtonFlags">915685631</int>
 										<int key="NSButtonFlags2">162</int>
 										<string key="NSAlternateContents"/>
 										<string key="NSKeyEquivalent"/>
@@ -1713,7 +1713,7 @@
 					<string key="NSFrameSize">{30, 342}</string>
 					<reference key="NSSuperview"/>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1920, 1178}}</string>
+				<string key="NSScreenRect">{{0, 0}, {1280, 778}}</string>
 				<string key="NSMaxSize">{1.79769e+308, 1.79769e+308}</string>
 			</object>
 			<object class="NSCustomObject" id="976324537">
@@ -1722,7 +1722,7 @@
 			<object class="NSCustomObject" id="755631768">
 				<string key="NSClassName">NSFontManager</string>
 			</object>
-			<object class="NSUserDefaultsController" id="842111092">
+			<object class="NSUserDefaultsController" id="375250030">
 				<bool key="NSSharedInstance">YES</bool>
 			</object>
 		</object>
@@ -3980,7 +3980,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">584</int>
-						<reference key="object" ref="842111092"/>
+						<reference key="object" ref="375250030"/>
 						<reference key="parent" ref="0"/>
 					</object>
 				</object>
@@ -4402,7 +4402,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
 					<string>{{525, 802}, {197, 73}}</string>
-					<string>{{389, 463}, {430, 20}}</string>
+					<string>{{358, 2}, {430, 20}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
 					<string>{74, 862}</string>
@@ -4427,9 +4427,9 @@
 					<integer value="1"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
-					<string>{{387, 287}, {30, 342}}</string>
+					<string>{{496, 313}, {30, 342}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{387, 287}, {30, 342}}</string>
+					<string>{{496, 313}, {30, 342}}</string>
 					<integer value="1"/>
 					<string>{{33, 99}, {480, 360}}</string>
 					<string>{3.40282e+38, 3.40282e+38}</string>
@@ -4658,7 +4658,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">605</int>
+			<int key="maxID">612</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -4871,6 +4871,7 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>buttonFlagMask</string>
+							<string>buttonTitleBold</string>
 							<string>cmdButtonValue</string>
 							<string>ctlButtonValue</string>
 							<string>flagChangeMonitor</string>
@@ -4881,6 +4882,7 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -4896,6 +4898,7 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>buttonFlagMask</string>
+							<string>buttonTitleBold</string>
 							<string>cmdButtonValue</string>
 							<string>ctlButtonValue</string>
 							<string>flagChangeMonitor</string>
@@ -4908,6 +4911,10 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBToOneOutletInfo">
 								<string key="name">buttonFlagMask</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">buttonTitleBold</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBToOneOutletInfo">

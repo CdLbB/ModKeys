@@ -9,11 +9,7 @@
 
 property BitCalculations : class "BitCalculations"
 property GlobalMonitor : class "GlobalMonitor"
-property MyNSEvent : class "MyNSEvent"
-
-property NSEvent : class "NSEvent"
-
-
+property MyNSEvent : class "MyNSEvent" -- subclass of NSEvent with clickAtLocation_(pt)
 
 script ModKeysAppDelegate
 	property parent : class "NSObject"
@@ -42,6 +38,7 @@ script ModKeysAppDelegate
 	property ctlButtonValue : missing value
 	property shftButtonValue : missing value
 	
+	
 	------- Reference to window -------
 	property keyPanel : missing value
 	
@@ -69,7 +66,6 @@ script ModKeysAppDelegate
 	------- One Modifier button pushed, click one mod key in Quickclicks to reflect that -------
 	on changeModKey_keyMask_toState_(keyChar, keyMask, senderState)
 		set newModMask to (MyNSEvent's modifierFlags) as integer
-		log newModMask
 		if buttonFlagMask = newModMask then return 0 -- no changes needed
 		
 		GlobalMonitor's removeMonitor_(flagChangeMonitor) --stop monitor to keep it from changing stuff while we click a mod key in Quickclicks
@@ -89,7 +85,7 @@ script ModKeysAppDelegate
 		
 		------ Sometimes fails, so repeat up to 3 times with increasing delays ------
 		do shell script "sleep 0.3"
-		set newModMask to (NSEvent's modifierFlags) as integer
+		set newModMask to (MyNSEvent's modifierFlags) as integer
 		set keyBitValue to (BitCalculations's andBitsOf_with_(newModMask, keyMask) as integer ≠ 0) as integer
 		if keyBitValue ≠ senderState then
 			log "2nd try"
@@ -98,7 +94,7 @@ script ModKeysAppDelegate
 			toggleQCKey_(keyChar)
 			
 			do shell script "sleep 1"
-			set newModMask to (NSEvent's modifierFlags) as integer
+			set newModMask to (MyNSEvent's modifierFlags) as integer
 			set keyBitValue to (BitCalculations's andBitsOf_with_(newModMask, keyMask) as integer ≠ 0) as integer
 			if keyBitValue ≠ senderState then
 				log "3rd try"
@@ -122,7 +118,7 @@ script ModKeysAppDelegate
 		end if
 		
 		---- Test to see if we succeeded in changing the modifier flag, if not return a 1 ----
-		set newModMask to (NSEvent's modifierFlags) as integer
+		set newModMask to (MyNSEvent's modifierFlags) as integer
 		set keyBitValue to (BitCalculations's andBitsOf_with_(newModMask, shftBitMask) as integer ≠ 0) as integer
 		if keyBitValue ≠ senderState then return 1
 		
@@ -265,7 +261,7 @@ script ModKeysAppDelegate
 	-------- Set system mod key state to reflect mask -------
 	-------- Does not affect app's modifier buttons --------
 	on setModFlagMaskTo_(mask)
-		set newModMask to (NSEvent's modifierFlags) as integer
+		set newModMask to (MyNSEvent's modifierFlags) as integer
 		if newModMask = mask then return -- nothing to do
 		
 		GlobalMonitor's removeMonitor_(flagChangeMonitor) --stop monitor to keep it from changing stuff while we click a mod key in Quickclicks
@@ -335,10 +331,10 @@ script ModKeysAppDelegate
 		-- in the event of a failure to clear modifier flags
 		-- will usually reset on next click
 		-- but might be smarter to wait 1 sec and try again
-		set newModMask to (NSEvent's modifierFlags) as integer
+		set newModMask to (MyNSEvent's modifierFlags) as integer
 		if newModMask ≠ 0 and modKeyLockOn as boolean is false then
 			do shell script "sleep 1"
-			set newModMask to (NSEvent's modifierFlags) as integer
+			set newModMask to (MyNSEvent's modifierFlags) as integer
 			if newModMask ≠ 0 and modKeyLockOn as boolean is false then
 				setModFlagMaskTo_(0)
 				--set nextEventMonitor to GlobalMonitor's monitorNext_performSelector_target_(nextEventMask, "clearModButtons:", me)
@@ -350,7 +346,7 @@ script ModKeysAppDelegate
 	---- resets modifier button to reflect change ----
 	--- using setModButtonValues(newModMask) ---
 	on modifierFlagsChanged_(theEvent)
-		set newModMask to (NSEvent's modifierFlags) as integer
+		set newModMask to (MyNSEvent's modifierFlags) as integer
 		if newModMask is buttonFlagMask then -- nothing to do
 			set flagMonitorOn to true
 			log "other hi"
@@ -442,8 +438,15 @@ script ModKeysAppDelegate
 		set flagChangeMonitor to GlobalMonitor's monitorEvery_performSelector_target_(current application's NSFlagsChangedMask, "modifierFlagsChanged:", me)
 		
 		-- set mod key buttons to reflect present system modifier state --
-		set newModMask to (NSEvent's modifierFlags) as integer
+		set newModMask to (MyNSEvent's modifierFlags) as integer
 		setModButtonValues(newModMask)
+		(*
+		set txtColor to current application's NSColor's redColor()
+		set txtDict to current application's NSDictionary's dictionaryWithObjectsAndKeys_(txtColor, current application's NSForegroundColorAttributeName, missing value)
+		set attrStr to current application's NSAttributedString's alloc()
+		attrStr's initWithString_attributes_(" ⇧", txtDict)
+		set my altShftTitle to attrStr
+		*)
 		
 		-- If lock off and modkeys set, monitor next click to reset modkeys
 		if modKeyLockOn is 0 and buttonFlagMask ≠ 0 then
