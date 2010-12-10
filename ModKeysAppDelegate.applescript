@@ -266,7 +266,7 @@ script ModKeysAppDelegate
 			if buttonFlagMask = 0 then set my modKeyLockOn to 0
 		end if
 		
-		if buttonFlagMask = 0 then -- set to hide window in 8 seconds
+		if buttonFlagMask = 0 and mouseOverWindow is false then -- set to hide window in 8 seconds
 			set hideDelayTimerOn to true
 			current application's NSObject's cancelPreviousPerformRequestsWithTarget_selector_object_(me, "hideWindow", missing value)
 			performSelector_withObject_afterDelay_("hideWindow", missing value, 8)
@@ -329,6 +329,7 @@ script ModKeysAppDelegate
 		log "xClearModButtons"
 		setModFlagMaskTo_(0)
 		setModButtonValues(0)
+		set my modKeyLockOn to 0
 	end xClearModButtons_
 	-------------------------------------------------------------------------
 	
